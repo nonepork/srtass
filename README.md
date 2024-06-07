@@ -11,9 +11,9 @@ python ./srtass.py --help
 ```
 To shift multiple files, type:
 ```bash
-python ./srtass.py filename1 filename2
+python ./srtass.py filename1 filename2 arguments
 ```
 or
 ```bash
-python ./srtass.py folder
+python ./srtass.py folder arguments
 ```
