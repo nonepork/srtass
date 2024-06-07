@@ -32,6 +32,7 @@ minutes = args.minutes
 for filename in files:
     if os.path.isdir(filename):
         for deeper_file in os.listdir(filename):
+            deeper_file = os.path.join(filename, deeper_file)
             shift_timecode(deeper_file, seconds, milliseconds, minutes)
     elif os.path.isfile(filename):
         shift_timecode(filename, seconds, milliseconds, minutes)
