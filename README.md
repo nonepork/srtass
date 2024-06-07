@@ -1,7 +1,6 @@
 # srtass
-Simple script to change timecodes in subtitle files. Support .ass and .srt files. 
-Required python3.x.  
+
+A simple script that shifts the timecode of subtitle file.  
 For more information:
 
 ./srtass.py --help
-
