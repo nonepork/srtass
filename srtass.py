@@ -1,3 +1,4 @@
+import os
 import argparse
 from tools.timecodes import shift_timecode
 
@@ -27,5 +28,12 @@ seconds = args.seconds
 milliseconds = args.milliseconds
 minutes = args.minutes
 
+# TODO: centralized your file check mechanism
 for filename in files:
-    shift_timecode(filename, seconds, milliseconds, minutes)
+    if os.path.isdir(filename):
+        for deeper_file in os.listdir(filename):
+            shift_timecode(deeper_file, seconds, milliseconds, minutes)
+    elif os.path.isfile(filename):
+        shift_timecode(filename, seconds, milliseconds, minutes)
+    else:
+        raise Exception("What did you just feed me?")

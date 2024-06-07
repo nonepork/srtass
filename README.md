@@ -13,3 +13,7 @@ To shift multiple files, type:
 ```bash
 python ./srtass.py filename1 filename2
 ```
+or
+```bash
+python ./srtass.py folder
+```
