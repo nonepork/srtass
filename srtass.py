@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(
     Supported formats: .ass and .srt""")
 
 parser.add_argument(
-    'file', help="""Path to the subtitle file that needs to be changed.""")
+    'filenames', nargs='+', help="""Path to the subtitle file that needs to be changed.""")
 
 parser.add_argument(
     '-s', '--seconds', type=int, default=0,
@@ -22,10 +22,10 @@ parser.add_argument(
     help="""The minutes for which the timecode needs to be corrected.""")
 
 args = parser.parse_args()
-file = args.file
+files = args.filenames
 seconds = args.seconds
 milliseconds = args.milliseconds
 minutes = args.minutes
 
-# shift_timecode(file, seconds, milliseconds, minutes)
-print(file)
+for filename in files:
+    shift_timecode(filename, seconds, milliseconds, minutes)

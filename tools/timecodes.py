@@ -3,7 +3,9 @@ from tools.subtime import SubTime
 
 
 def shift_timecode(file, seconds=0, milliseconds=0, minutes=0):
-    with open(file) as o_f:
+    new_filename = ""
+
+    with open(file, encoding="utf-8") as o_f:
         old_file = o_f.readlines()
         if file.endswith(".srt"):
             timecode = re.compile(
@@ -20,6 +22,8 @@ def shift_timecode(file, seconds=0, milliseconds=0, minutes=0):
                         f"{line[0]}:{line[1]}:{line[2]},{line[3]} {line[4]} "
                         + f"{line[5]}:{line[6]}:{line[7]},{line[8]}\n"
                     )
+
+            new_filename = file[:-3] + "matched" + ".srt"
 
         elif file.endswith(".ass"):
             for index, line in enumerate(old_file):
@@ -49,6 +53,7 @@ def shift_timecode(file, seconds=0, milliseconds=0, minutes=0):
                         line[10],
                     )
 
-    with open(file, "w") as new_file:
+            new_filename = file[:-3] + "matched" + ".ass"
+    with open(new_filename, "w", encoding="utf-8") as new_file:
         for line in old_file:
             new_file.write(line)
