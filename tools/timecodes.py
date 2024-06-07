@@ -31,6 +31,7 @@ def shift_timecode(file, seconds=0, milliseconds=0, minutes=0):
                     line = re.split("[:,.]", line, maxsplit=10)
                     # .ass files have two-digit number milliseconds
                     # so i do them 3-digit and 2 digit again later
+                    # TODO: this is wrong, fix this
                     line[5] = line[5] + "0"
                     line[9] = line[9] + "0"
                     time_line = SubTime(seconds, milliseconds, minutes)
